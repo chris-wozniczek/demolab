@@ -68,11 +68,22 @@ For research, look for a Markdown report in the working directory or attached to
 
 Choose any model available in your Devin model picker. The plugin does not pin a model or define a custom subagent. Upstream tailored the frontend skill for Gemini 4 and evaluated the research skill with Gemini 4; neither skill requires it, and upstream evaluations are not results for this port.
 
-In Devin CLI and Devin Desktop, the research skill asks for the built-in `subagent_general` profile, which inherits the parent agent's model. If you select a Gemini 4 model, those workers use it too. The skill does not use `subagent_explore`, which uses Devin's default subagent routing or configured override instead.
+In Devin CLI and Devin Desktop, the research skill asks for the built-in `subagent_general` profile, which inherits the parent agent's model and includes `webfetch` for reading primary sources directly. If you select a Gemini 4 model, those workers use it too. The skill does not use `subagent_explore`, which uses Devin's default subagent routing or configured override and cannot fetch arbitrary URLs (`web_search` only).
 
 In a cloud session, the skill uses the available subagent tool. The CLI/Desktop inheritance rule does not establish which model a cloud worker uses, so do not assume cloud workers inherit your selection. If subagents are unavailable or disabled, Devin runs the research tracks directly.
 
 On prompt-based plans, each CLI/Desktop general subagent consumes additional credits at the parent model's rate, like another session on that model. More workers can mean more spend. For a lighter run, ask Devin to do the research directly without subagents. See the [Devin subagents guide](https://docs.devin.ai/cli/subagents#which-model-does-a-subagent-use).
+
+### Web fetch permissions for background research
+
+In Devin CLI and Devin Desktop, background subagents inherit tool permissions you have already granted and automatically deny any tool that still requires confirmation. In **Normal** or **Accept Edits** mode, `webfetch` prompts by default, so background `deep-research` workers will have `webfetch` auto-denied and fall back to `web_search` snippets instead of reading primary sources directly.
+
+To let background research workers fetch pages directly, do one of the following:
+
+- Run in **Smart** mode (or **Bypass** / sandbox **Autonomous** mode).
+- Pre-approve web fetches by adding `"Fetch(domain:*)"` to `permissions.allow` in `~/.config/devin/config.json`, or by choosing **Yes, always allow all web fetches** the first time Devin prompts for a web fetch.
+
+See the [Devin permissions guide](https://docs.devin.ai/cli/reference/permissions) for details.
 
 ## Updating
 
