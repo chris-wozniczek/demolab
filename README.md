@@ -15,10 +15,15 @@ and building standout apps, web interfaces, and interactive demos.
 
 | Skill | Description |
 | :--- | :--- |
+| [`deep-research`](skills/deep-research) | Conduct deep, multi-agent research on complex topics by spawning parallel subagents that independently search, verify primary sources, and synthesize cited reports. |
 | [`gemini-frontend-design`](skills/gemini-frontend-design) | Design and build polished websites and web apps tailored to the brief. Covers opening screen format, layout, color, typography, custom imagery, copy, and motion when creating or redesigning web interfaces. |
 
 ### Performance
 
+- **`deep-research`**: Orchestrates parallel subagents to investigate complex
+  topics, verify primary sources, and synthesize cited reports. Tested across
+  hundreds of blind evaluations with Gemini 4 models, judges preferred the
+  output generated with this skill more than 90% of the time.
 - **`gemini-frontend-design`**: Every model has its own unique design quirks;
   this skill has been drafted to get the best out of Gemini 4 models for
   frontend design. Our evaluations found that users prefer frontend designs
@@ -34,6 +39,7 @@ preferred AI coding assistants and package managers:
 
 ```sh
 # Install a specific skill (recommended)
+npx skills add google-gemini/demolab --skill deep-research
 npx skills add google-gemini/demolab --skill gemini-frontend-design
 
 # Interactively browse and install skills
@@ -44,6 +50,7 @@ npx skills add google-gemini/demolab --list
 
 ```sh
 # Install a specific skill (recommended)
+npx ctx7 skills install /google-gemini/demolab deep-research
 npx ctx7 skills install /google-gemini/demolab gemini-frontend-design
 
 # Interactively browse and install skills
