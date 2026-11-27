@@ -76,9 +76,11 @@ On prompt-based plans, each CLI/Desktop general subagent consumes additional cre
 
 ### Web fetch permissions for background research
 
-In Devin CLI and Devin Desktop, background subagents inherit tool permissions you have already granted and automatically deny any tool that still requires confirmation. In **Normal** or **Accept Edits** mode, `webfetch` prompts by default, so background `deep-research` workers will have `webfetch` auto-denied and fall back to `web_search` snippets instead of reading primary sources directly.
+In Devin CLI and Devin Desktop, background subagents inherit tool permissions you have already granted and automatically deny any tool that still requires confirmation. Because `webfetch` prompts by default in **Normal** and **Accept Edits** modes, background `deep-research` workers will have `webfetch` auto-denied and fall back to `web_search` snippets unless web fetching is already allowed.
 
-To let background research workers fetch pages directly, do one of the following:
+When that happens, the skill does not run a dummy probe fetch up front. Instead, if background workers report `webfetch` denials, the parent agent verifies key primary URLs directly in the main session (or resumes a track in the foreground), which triggers Devin's normal confirmation prompt on a real source URL. Choosing **Yes, always allow all web fetches** on that prompt also unlocks `webfetch` for any follow-up background workers (whereas approving a single URL or domain only allows that target).
+
+To let background research workers fetch primary sources without interruption from the start, do one of the following:
 
 - Run in **Smart** mode (or **Bypass** / sandbox **Autonomous** mode).
 - Pre-approve web fetches by adding `"Fetch(domain:*)"` to `permissions.allow` in `~/.config/devin/config.json`, or by choosing **Yes, always allow all web fetches** the first time Devin prompts for a web fetch.
