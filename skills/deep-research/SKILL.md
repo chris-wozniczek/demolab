@@ -3,7 +3,8 @@ name: deep-research
 description: Conduct deep, multi-agent research on complex topics by spawning parallel subagents that independently search, analyze, and synthesize information. Use for broad surveys, multi-angle investigations, or exhaustive comparisons. Do not use for simple factual lookups.
 license: Apache-2.0
 metadata:
-  author: Chris Wozniczek
+  author: Google Gemini
+  modified-by: Chris Wozniczek
   origin: google-gemini/demolab
   modification-notice: "Modified by Chris Wozniczek for Devin, 2026; original: google-gemini/demolab"
   version: "1.0.0"
