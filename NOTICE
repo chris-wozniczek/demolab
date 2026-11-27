@@ -1,0 +1,10 @@
+DemoLab for Devin
+
+Derived from Gemini DemoLab by the Google Gemini team.
+Copyright 2026 Google LLC
+Original project: https://github.com/google-gemini/demolab
+Licensed under the Apache License, Version 2.0.
+
+Modified by Chris Wozniczek for Devin, 2026; original: google-gemini/demolab.
+The research skill is adapted for Devin and the frontend design skill is unchanged.
+This independent port is not endorsed by Google or Cognition.

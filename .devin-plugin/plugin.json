@@ -1,0 +1,11 @@
+{
+  "name": "demolab-devin",
+  "displayName": "DemoLab for Devin (unofficial port)",
+  "version": "1.0.0",
+  "description": "Deep research and frontend design skills for Devin, adapted from google-gemini/demolab.",
+  "author": {
+    "name": "Chris Wozniczek"
+  },
+  "repository": "https://github.com/chris-wozniczek/demolab",
+  "license": "Apache-2.0"
+}

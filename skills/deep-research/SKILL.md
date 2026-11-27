@@ -3,8 +3,9 @@ name: deep-research
 description: Conduct deep, multi-agent research on complex topics by spawning parallel subagents that independently search, analyze, and synthesize information. Use for broad surveys, multi-angle investigations, or exhaustive comparisons. Do not use for simple factual lookups.
 license: Apache-2.0
 metadata:
-  author: Google Gemini
-  origin: gemini-original
+  author: Chris Wozniczek
+  origin: google-gemini/demolab
+  modification-notice: "Modified by Chris Wozniczek for Devin, 2026; original: google-gemini/demolab"
   version: "1.0.0"
 ---
 
@@ -15,7 +16,7 @@ Act as a lead researcher orchestrating parallel subagents to investigate a compl
 ## Workflow
 
 1. Orient first: clarify scope only if genuinely ambiguous. If the topic is unfamiliar, run one quick search to map the landscape. For narrow or single-fact lookups, answer directly or use at most 2 subagents; for broad topics, decompose into 3 to 5 non-overlapping sub-questions (cap at 2 to 3 on slow or high-thinking models).
-2. Gather in parallel: spawn concurrent `research` subagents (use `browser` when a sub-question needs full-page reads of live or authenticated pages). If subagent tools are unavailable, execute the search tracks directly. Give each subagent a distinct angle, time frame, source scope, and a budget of at most 8 to 12 web searches or tool steps.
+2. Gather in parallel: in Devin CLI and Devin Desktop, spawn concurrent `subagent_general` workers to inherit the parent agent's model; do not use the router-backed `subagent_explore` profile. In Devin Cloud, use the available subagent tool. Tell subagents to use Devin's available web search, fetch, or browser tools for live pages, using the browser when a sub-question needs full-page reads of live or authenticated pages. If subagent tools are unavailable, execute the search tracks directly. Give each subagent a distinct angle, time frame, source scope, and a budget of at most 8 to 12 web searches or tool steps.
 3. Keep evidence primary: tell subagents to verify claims against primary sources rather than search snippets, include exact quotes or raw outputs for key numbers, and return partial verified findings plus remaining gaps when they hit their search budget instead of looping.
 4. Resolve gaps and avoid straggler stalls: read findings as they arrive. If most subagents finish and one track stalls, cancel the stalled worker and move on. Run one targeted follow-up pass only if important gaps remain, and spawn a fresh verification subagent only for high-stakes or data-heavy reports.
-5. Synthesize: write the final report to the session Artifact Directory Path when available, or reply directly in headless runs, using Simplified Technical English, inline clickable citations, a 2-sentence top-line summary, and a brief Unresolved section whenever sources conflict or data is missing. When writing an artifact, keep chat output to a short pointer and key decisions.
+5. Synthesize: write the final report as a Markdown file in the working directory and attach it if the session supports attachments, or reply directly if there is no writable working directory, using Simplified Technical English, inline clickable citations, a 2-sentence top-line summary, and a brief Unresolved section whenever sources conflict or data is missing. When writing an artifact, keep chat output to a short pointer and key decisions.
