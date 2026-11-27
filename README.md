@@ -2,7 +2,7 @@
 
 > Modified by Chris Wozniczek for Devin, 2026; original: [google-gemini/demolab](https://github.com/google-gemini/demolab).
 
-DemoLab for Devin is an unofficial port of Google's Gemini DemoLab. It packages two reusable skills in one Devin plugin for Devin CLI, Devin Desktop, and cloud sessions started from the Devin web app (Devin Next). It is not endorsed by Google or Cognition.
+DemoLab for Devin is an unofficial port of Google's Gemini DemoLab. It packages two reusable skills in one Devin plugin for Devin CLI, Devin Desktop (including the Devin Next beta), and the Devin web app (cloud sessions). It is not endorsed by Google or Cognition.
 
 ## Skills
 
@@ -19,7 +19,13 @@ Use one of the following methods. Once installed in your personal scope, the plu
 
 ### Devin CLI
 
-Install and sign in to the [Devin CLI](https://docs.devin.ai/cli), then run:
+Install and sign in to the [Devin CLI](https://docs.devin.ai/cli). To install the plugin on this machine only, run:
+
+```sh
+devin plugins install --local chris-wozniczek/demolab
+```
+
+To sync the plugin to your other devices and cloud sessions instead, omit `--local`. This records the install in your Devin Cloud personal manifest:
 
 ```sh
 devin plugins install chris-wozniczek/demolab
@@ -34,11 +40,11 @@ devin plugins install --local .
 
 Start a new session after installing or editing the linked skills.
 
-### Devin Desktop
+### Devin Desktop (including Devin Next beta)
 
 In the Agents window, open **Customize → Plugins** and install from the GitHub repository `chris-wozniczek/demolab` or select a local checkout for development. If you installed the plugin in your personal scope from the CLI or web, it syncs to Desktop when you sign in. See [Devin Desktop customizations](https://docs.devin.ai/desktop/devin-local/customizations#plugins).
 
-### Devin Next / web app
+### Devin web app (cloud sessions)
 
 Open [Customize](https://app.devin.ai/customize) from the sidebar and choose **Plugins**. For your own sessions, select **Myself**. Choose **Add plugin → From repository**, enter `chris-wozniczek/demolab`, and install. Start a new cloud session to use the skills. If the web app cannot index the repository, check repository access and the indexing status in **Plugin settings**. See the [web plugin guide](https://docs.devin.ai/product-guides/plugins).
 
