@@ -83,7 +83,7 @@ When that happens, the skill does not run a dummy probe fetch up front. Instead,
 To let background research workers fetch primary sources without interruption from the start, do one of the following:
 
 - Run in **Smart** mode (or **Bypass** / sandbox **Autonomous** mode).
-- Pre-approve web fetches by adding `"Fetch(domain:*)"` to `permissions.allow` in `~/.config/devin/config.json`, or by choosing **Yes, always allow all web fetches** the first time Devin prompts for a web fetch.
+- Choose **Yes, always allow all web fetches** the first time Devin prompts for a web fetch, or add `"Fetch(https://*/*)"` to `permissions.allow` in `~/.config/devin/config.json`. This WHATWG URL pattern matches HTTPS only, so plain `http://` URLs still require approval unless another rule allows them.
 
 See the [Devin permissions guide](https://docs.devin.ai/cli/reference/permissions) for details.
 
